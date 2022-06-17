@@ -17,7 +17,7 @@ pipeline {
                 dir('/var/lib/jenkins/workspace/BuildAndDeployECR'){
                     sh'whoami'
                     sh'echo " ===== Build Maven ======= "'
-                    sh'sudo /opt/maven/bin/mvn clean install'
+                    sh'/opt/maven/bin/mvn clean install'
                 }
                 script{
                  app = docker.build("underwater")
