@@ -18,6 +18,7 @@ pipeline {
                     sh'whoami'
                     sh'echo " ===== Build Maven ======= "'
                     sh'/opt/maven/bin/mvn clean install'
+                    sh'chmod 777 /var/lib/jenkins/workspace/BuildAndDeployECR/webapp/target/webapp.war '
                 }
                 script{
                  app = docker.build("underwater")
