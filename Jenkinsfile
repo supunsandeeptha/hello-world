@@ -18,11 +18,8 @@ pipeline {
                     sh'whoami'
                     sh'echo " ===== Build Maven ======= "'
                     sh'/opt/maven/bin/mvn clean install'
-                    sh'chmod 777 /var/lib/jenkins/workspace/BuildAndDeployECR/webapp/target/webapp.war '
                 }
-                script{
-                 app = docker.build("underwater")
-                }
+
             }
         }
         stage('Test'){
@@ -32,6 +29,9 @@ pipeline {
         }
         stage('Deploy') {
             steps {
+                script{
+                 app = docker.build("underwater")
+                }
                 script{
                         docker.withRegistry('https://943621582633.dkr.ecr.ap-southeast-2.amazonaws.com/jenkins-pipeline', 'ecr:ap-southeast-2:aws-credentials') {
                     app.push("${env.BUILD_NUMBER}")
