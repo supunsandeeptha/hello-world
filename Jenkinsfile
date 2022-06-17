@@ -14,6 +14,9 @@ pipeline {
 
         stage('Build') { 
             steps { 
+                dir('/var/lib/jenkins/workspace/BuildAndDeployECR')
+                sh'echo " ===== Build Maven ======= "'
+                sh'mvn clean install'
                 script{
                  app = docker.build("underwater")
                 }
