@@ -34,7 +34,7 @@ pipeline {
                  app = docker.build("underwater")
                 }
                 script{
-                        docker.withRegistry('https://943621582633.dkr.ecr.ap-southeast-2.amazonaws.com/jenkins-pipeline', 'ecr:ap-southeast-2:aws-credentials') {
+                        docker.withRegistry('https://943621582633.dkr.ecr.ap-southeast-2.amazonaws.com/jenkins-pipeline') {
                     app.push("${env.BUILD_NUMBER}")
                     app.push("latest")
                     }
