@@ -18,6 +18,7 @@ pipeline {
                     sh'whoami'
                     sh'echo " ===== Build Maven ======= "'
                     sh'/opt/maven/bin/mvn clean install'
+                    sh' cp /var/lib/jenkins/workspace/BuildAndDeployECR/webapp/target/webapp.war /var/lib/jenkins/workspace/BuildAndDeployECR/ '
                 }
 
             }
