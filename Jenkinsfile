@@ -31,7 +31,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script{
-                 app = docker.build("underwater")
+                 app = docker.build("jenkins-pipeline")
                 }
                 script{
                         docker.withRegistry('https://943621582633.dkr.ecr.ap-southeast-2.amazonaws.com','ecr:ap-southeast-2:aws-credentials') {
